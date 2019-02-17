@@ -13,6 +13,12 @@ pipeline {
 ansible-playbook -i inventory.ini user_add.yml'''
       }
     }
+    stage('Setup Docker ') {
+      steps {
+        sh '''cd /root/playbooks
+ansible-playbook -i inventory.ini docker.yml'''
+      }
+    }
   }
   environment {
     env = 'dev'
